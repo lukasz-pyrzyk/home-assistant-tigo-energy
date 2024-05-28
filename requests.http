@@ -1,3 +1,15 @@
-GET https://api2.tigoenergy.com/api/v3/users/login
+@base = https://api2.tigoenergy.com/api/v3
+
+###  Login request
+GET {{base}}/users/login
 Accept: application/json
-Authorization: Basic {{$processEnv TIGO_USERNAME}}:{{$processEnv TIGO_PASSWORD}}
+Authorization: Basic {{username}} {{password}}
+
+> {%
+    client.global.set("auth_token", response.body.user.auth);
+%}
+
+### Get systems
+GET {{base}}/systems
+Accept: application/json
+Authorization: Bearer {{auth_token}}
