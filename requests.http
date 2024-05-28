@@ -1,0 +1,3 @@
+GET https://api2.tigoenergy.com/api/v3/users/login
+Accept: application/json
+Authorization: Basic {{$processEnv TIGO_USERNAME}}:{{$processEnv TIGO_PASSWORD}}
